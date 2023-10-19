@@ -2,6 +2,48 @@
 #include <vector>
 using namespace std;
 
+// This functions is a part of the Day 2 Code.
+int insertAtPosition(int position, int element, int A[], const int CAPACITY, int current_size)
+{
+    for (int i = current_size - 1; i >= position; i--)
+    {
+        // Puts the value of the array at index i + 1 equal to the value of array at index i.
+        // This shifts the element of each index to the right one.
+        A[i+1] = A[i];
+    }
+    A[position] = element;
+    current_size ++;
+
+    return current_size;
+}
+
+void displayArray(int A[], int current_size)
+{
+    for (int i = 0; i < current_size; i++)
+    {
+        cout << A[i] << " ";
+    }
+}
+
+int deleteElement(int to_delete, int A[], int current_size)
+{
+    int position_found = -1;
+    // We don't know where 7 is in our array, so we must search for it.
+    for (int i = 0; i < current_size; i++)
+    {
+        if(A[i] == to_delete)
+        {
+            position_found = i;
+        }
+    }
+    for (int i = position_found + 1; i < current_size; i++)
+    {
+        A[i-1] = A[i];
+    }
+    current_size --;
+    return current_size;
+}
+
 int main(){
     // 2D Arrays: Arrangement consisting of tabular data (rows and columns) is called a 2D Array or Matrix
     const int COUNTRIES = 5;
@@ -55,6 +97,124 @@ int main(){
         {true, true, true, false, false},
         {false, false, false ,false, false}
     }; 
+
+
+
+
+    /*
+        Day 2
+        When sending an array to a function, don't send the rows, but you send the columns
+        Every row must have a fixed # of columns, so you must specify which columns to use.
+
+        Arrays in memory:
+        stored as one big line of data.
+        Array [3][2] = [][] | [][] | [][]
+        where [] is a piece of data in the array, and the | tells the compiler that 
+        this is a new column of data
+
+        offset: row_index * # of columns + column_index
+
+        Drawbacks of an array:
+        Size cannot be changed after it is first initialised.
+        Size must be correct when the array is created.
+        Compiler needs to know size in order to build array and functions need to be
+        told the number of elements in an array, and its capacity
+
+        Commonly Used Array Algorithms
+        Insertion:
+        Given an array of elements, (int in this example,) we can insert an element in 2 ways.
+            Either at the end of the array, or anywhere there is space.
+
+        int Array[10] = 
+        
+        0  1  2  3  4  5  6  7  8  9 
+        1  3  5  7  9  11
+
+        **Where the top row is the index and the bottom row is the element itself.
+
+        We need the position of insertion and the element to insert.
+        All we do is equate array at the index (position,) to the element we wish to insert.
+
+        Given an array A:
+
+        A[position] = element;
+
+        Array[6] = 13;
+
+        Or, we could choose to insert an element into index #1
+        Again, all we need to know is the position and the desired element.
+        This inserts the element and then shifts all other values up one index value.
+
+        element = 1
+        position = 1
+
+        Start at the last element we have stored and move them to the right, 
+        in order to not lose values
+
+        for (int i = index_max; i > (POSITION); i--)
+
+
+    */
+
+
+   cout << endl << endl << "DAY 2 CODE" << endl << endl;
+
+   const int ARRAY_CAPACITY = 10;
+   int current_size = 7;
+   int A[10] = {1, 3, 5, 7, 9, 11, 13};
+
+    // Insert element 1 at index position 1.
+   int element = 1;
+   int position = 1;
+
+   displayArray(A, current_size);
+
+   current_size = insertAtPosition(position, element, A, ARRAY_CAPACITY, current_size);
+
+   displayArray(A, current_size);
+
+   cout << endl << endl;
+
+   element = 2;
+   position = 2;
+
+   current_size = insertAtPosition(position, element, A, ARRAY_CAPACITY, current_size);
+
+   displayArray(A, current_size);
+
+   /*
+        Deletion:
+        Delete a specific element from the array
+
+        A[10] = {1, 1, 2, 3, 5, 7, 9, 11, 13};
+        Start at index 6, moving everything left by one.
+        This replaces 7 with 9.
+   */
+
+  // The number we wish to delete
+  int to_delete = 7;
+  
+  // We reassign current size, as doing this operation will change the current length of our array.
+  current_size = deleteElement(to_delete, A, current_size);
+  cout << endl << endl;
+
+    // Displays array.
+  displayArray(A, current_size);
+
+    // Repeats
+  to_delete = 9;
+  
+  current_size = deleteElement(to_delete, A, current_size);
+  cout << endl << endl;
+
+  displayArray(A, current_size);
+
+  to_delete = 11;
+  
+  current_size = deleteElement(to_delete, A, current_size);
+  cout << endl << endl;
+
+  displayArray(A, current_size);
 
 
     /*
