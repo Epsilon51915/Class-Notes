@@ -202,7 +202,7 @@ int main(){
             - Concatenate strings
             - Tokenize strings
 
-        Tokenizing refers ti breaking a string into smaller parts that are separated
+        Tokenizing refers to breaking a string into smaller parts that are separated
         by a delimiter.
         
         We can, for instance, take a string for a movie review and make a comma the delimiter.
