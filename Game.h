@@ -1,3 +1,6 @@
+#ifndef GAME_H
+#define GAME_H
+
 // This is a header file!!
 // We are copying all the data from the class.
 
@@ -30,8 +33,19 @@ class Pokemon {
         
         string getName();
         int getHP();
-        string getType();
+        string getType(); 
 
+        void display();
+
+
+    // -------------------- Class Constructors -------------------
         Pokemon();
+
+        //Non-default (parameterized) constructors:
+        Pokemon(string name, int id);
       
+        Pokemon(string name, int id, int hp, int attack, int defense, int speed, string type);
+        // Since these constructors are different, they are called Overloaded Constructors.
 };
+
+#endif

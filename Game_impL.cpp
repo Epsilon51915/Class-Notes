@@ -1,4 +1,4 @@
-#include "week9Game.h"
+#include "Game.h"
 
 
 // Now that we have implementation in this function, we can delete it from the game.h file.
@@ -68,4 +68,27 @@ Pokemon::Pokemon()
             defense_ = 7;
             type_ = "Normal";
             speed_ = 3;
+        }
+
+Pokemon::Pokemon(string name, int id)
+        {
+            name_ = name;
+            id_ = id;
+        }
+
+Pokemon::Pokemon(string name, int id, int hp, int attack, int defense, int speed, string type)
+        {
+            name_ = name;
+            id_ = id;
+            hp_ = hp;
+            attack_ = attack;
+            defense_ = defense;
+            speed_ = speed;
+            type_ = type;
+        }
+
+void Pokemon::display()
+        {
+            cout << "Name: " << name_ << endl;
+            cout << "ID: " << id_ << endl;
         }

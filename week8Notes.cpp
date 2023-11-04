@@ -115,7 +115,6 @@ int main(){
    }
 
     os << "Number of Lines: " << count_of_lines;
-
    os.close();
 
     /*
@@ -126,7 +125,6 @@ int main(){
     */
 
    // Illustrating how getline works
-
    cout << "DAY 2" << endl << endl;
 
    ifstream input_stream;
